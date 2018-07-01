@@ -7,8 +7,8 @@ Helps you to generate a beautiful, programmable, with error checks and portable 
 ```bash
 apt install nodejs -y
 apt install npm -y
-git clone https://github.com/flavienbwk/json_to_makefile
-cd json_to_makefile
+git clone https://github.com/flavienbwk/json_makefile
+cd json_makefile
 ```
 
 ## Use :
