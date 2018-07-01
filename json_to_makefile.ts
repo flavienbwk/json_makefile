@@ -3,10 +3,10 @@ const   Parser = require('./lib/Parser.ts');
 const   Utilities = require('./lib/Utilities.ts');
 var     fs = require('fs');
 
-var files = [];
-var valid_files = [];
-let consoleColors = new ConsoleColors();
-let utilities = new Utilities();
+var     files = [];
+var     valid_files = [];
+let     consoleColors = new ConsoleColors();
+let     utilities = new Utilities();
 
 consoleColors.print_title("Welcome to JSON_TO_MAKEFILE script.");
 

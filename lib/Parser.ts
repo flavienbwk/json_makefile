@@ -1,5 +1,5 @@
-var Pjson = require('../package.json');
-var Fs = require('fs');
+var     Pjson = require('../package.json');
+var     Fs = require('fs');
 const   Utilities = require('./Utilities.ts');
 
 let     g_utils = new Utilities();
