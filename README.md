@@ -15,7 +15,7 @@ cd json_to_makefile
 
 Assuming `makefile_example.json` is the JSON Makefile you want to convert.
 ```bash
-node json_to_makefile.js makefile_example.json # [, makefile_example_2.json[, makefile_example_3.json ...]]
+node json_to_makefile.ts makefile_example.json # [, makefile_example_2.json[, makefile_example_3.json ...]]
 ```
 
 
