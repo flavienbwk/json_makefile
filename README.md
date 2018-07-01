@@ -28,7 +28,9 @@ node json_to_makefile.ts makefile_example.json # [ makefile_example_2.json [ mak
     "variables": {                  // Declare here your variables and their values.
         "CC": "gcc",
         "MAIN_PRGM": "main.c",
-        "NAME_PRGM": "my_program"
+        "NAME_PRGM": "my_program",
+        "$(NAME)": "this is a name",
+        "$(LMY)": "another name"
     },
     "targets": [                    // Define here your targets.
         {
@@ -63,9 +65,11 @@ Will output inside `Makefile` :
 CC        = gcc
 MAIN_PRGM = main.c
 NAME_PRGM = my_ls
+$(NAME)   = this is a name
+$(LMY)    = another name
 
 bindprgm:   $(LMY) $(NAME) 
-            gcc -lm -o $(NAME_PRGM) $(MAIN_PRGM) $(NAME) $(LMY)/libmy.a
+            gcc -lm -o $(NAME_PRGM) $(MAIN_PRGM)
 
 $(NAME):    $(OBJ) 
             ar rc $(NAME) $(OBJ)
