@@ -5,10 +5,7 @@ Helps you to generate a beautiful, programmable, with error checks and portable 
 ## Install :
 
 ```bash
-apt install nodejs -y
-apt install npm -y
-git clone https://github.com/flavienbwk/json_makefile
-cd json_makefile
+npm i json_makefile
 ```
 
 ## Use :
