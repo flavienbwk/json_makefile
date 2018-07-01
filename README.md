@@ -36,7 +36,8 @@ node json_to_makefile.ts makefile_example.json # [ makefile_example_2.json [ mak
         {
             "name": "$(NAME)",      // Name of the target.
             "dependencies" : [      // Dependencies of the target.
-                "$(OBJ)"
+                "$(OBJ)",
+                "$(LMY)"
             ],
             "commands": [           // Commands associated with the target.
                 "ar rc $(NAME) $(OBJ)",
@@ -65,7 +66,7 @@ NAME_PRGM = my_ls
 $(NAME)   = this is a name
 $(LMY)    = another name
 
-$(NAME):    $(OBJ) 
+$(NAME):    $(OBJ) $(LMY)
             ar rc $(NAME) $(OBJ)
             ranlib $(NAME)
             chmod +x $(NAME)
