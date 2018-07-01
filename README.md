@@ -34,26 +34,23 @@ node json_to_makefile.ts makefile_example.json # [ makefile_example_2.json [ mak
     },
     "targets": [                    // Define here your targets.
         {
-            "name": "bindprgm",     // Name of the target.
+            "name": "$(NAME)",      // Name of the target.
             "dependencies" : [      // Dependencies of the target.
-                "$(LMY)",
-                "$(NAME)"
-            ],
-            "commands": [           // Commands associated with the target.
-                "gcc-o $(NAME_PRGM) $(MAIN_PRGM)"
-            ]
-        },
-        {                           // Another example.
-            "name": "$(NAME)",
-            "dependencies" : [
                 "$(OBJ)"
             ],
-            "commands": [
+            "commands": [           // Commands associated with the target.
                 "ar rc $(NAME) $(OBJ)",
                 "ranlib $(NAME)",
                 "chmod +x $(NAME)"
             ]
         },
+        {
+            "name": "$(LMY)",
+            "dependencies": [],     // Can have no dependency.
+            "commands": [
+                "make -C $(LMY)"
+            ]
+        }
         // [...]
     ]
 }
@@ -67,9 +64,6 @@ MAIN_PRGM = main.c
 NAME_PRGM = my_ls
 $(NAME)   = this is a name
 $(LMY)    = another name
-
-bindprgm:   $(LMY) $(NAME) 
-            gcc -lm -o $(NAME_PRGM) $(MAIN_PRGM)
 
 $(NAME):    $(OBJ) 
             ar rc $(NAME) $(OBJ)
