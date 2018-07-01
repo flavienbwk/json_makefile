@@ -21,7 +21,7 @@ node json_to_makefile.js makefile_example.json # [, makefile_example_2.json[, ma
 
 ## Creating the JSON Makefile (example) :
 
-```json
+```javascript
 {
     "parser_version": "0.0.1",      // Version of json_to_makefile for which the JSON has been designed.
     "output": "Makefile",           // Name of the output file converted.
