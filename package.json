@@ -1,0 +1,24 @@
+{
+  "name": "json_makefile",
+  "version": "0.0.1",
+  "description": "A simple utility to convert a JSON file to a well-formatted Makefile.",
+  "main": "json_to_makefile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flavienbwk/json_makefile.git"
+  },
+  "keywords": [
+    "json",
+    "makefile",
+    "nodejs"
+  ],
+  "author": "Flavien Berwick",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flavienbwk/json_makefile/issues"
+  },
+  "homepage": "https://github.com/flavienbwk/json_makefile#readme"
+}

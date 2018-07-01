@@ -1,0 +1,39 @@
+{
+    "parser_version": "0.0.1",
+    "output": "Makefile",
+    "variables": {
+        "CC": "gcc",
+        "MAIN_PRGM": "main.c",
+        "NAME_PRGM": "my_ls"
+    },
+    "targets": [
+        {
+            "name": "bindprgm",
+            "dependencies" : [
+                "$(LMY)",
+                "$(NAME)"
+            ],
+            "commands": [
+                "gcc -lm -o $(NAME_PRGM) $(MAIN_PRGM) $(NAME) $(LMY)/libmy.a"
+            ]
+        },
+        {
+            "name": "$(NAME)",
+            "dependencies" : [
+                "$(OBJ)"
+            ],
+            "commands": [
+                "ar rc $(NAME) $(OBJ)",
+                "ranlib $(NAME)",
+                "chmod +x $(NAME)"
+            ]
+        },
+        {
+            "name": "$(LMY)",
+            "dependencies" : [],
+            "commands": [
+                "make -C $(LMY)"
+            ]
+        }
+    ]
+}
