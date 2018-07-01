@@ -8,6 +8,15 @@ Helps you to generate a beautiful, programmable, with error checks and portable 
 npm i json_makefile
 ```
 
+**OR**
+
+```bash
+apt install nodejs -y
+apt install npm -y	
+git clone https://github.com/flavienbwk/json_makefile	
+cd json_makefile
+```
+
 ## Use :
 
 Assuming `makefile_example.json` is the JSON Makefile you want to convert.
