@@ -56,3 +56,23 @@ node json_to_makefile.ts makefile_example.json # [, makefile_example_2.json[, ma
     ]
 }
 ```
+
+Will output :
+
+```Makefile
+CC        = gcc
+MAIN_PRGM = main.c
+NAME_PRGM = my_ls
+
+bindprgm:   $(LMY) $(NAME) 
+            gcc -lm -o $(NAME_PRGM) $(MAIN_PRGM) $(NAME) $(LMY)/libmy.a
+
+$(NAME):    $(OBJ) 
+            ar rc $(NAME) $(OBJ)
+            ranlib $(NAME)
+            chmod +x $(NAME)
+
+$(LMY):     
+            make -C $(LMY)
+
+```
