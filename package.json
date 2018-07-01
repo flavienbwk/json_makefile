@@ -1,6 +1,6 @@
 {
   "name": "json_makefile",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple utility to convert a JSON file to a well-formatted Makefile.",
   "main": "json_to_makefile.js",
   "scripts": {

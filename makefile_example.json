@@ -4,22 +4,14 @@
     "variables": {
         "CC": "gcc",
         "MAIN_PRGM": "main.c",
-        "NAME_PRGM": "my_ls"
+        "NAME_PRGM": "my_ls",
+        "$(NAME)": "this is a name",
+        "$(LMY)": "another name"
     },
     "targets": [
         {
-            "name": "bindprgm",
-            "dependencies" : [
-                "$(LMY)",
-                "$(NAME)"
-            ],
-            "commands": [
-                "gcc -lm -o $(NAME_PRGM) $(MAIN_PRGM) $(NAME) $(LMY)/libmy.a"
-            ]
-        },
-        {
             "name": "$(NAME)",
-            "dependencies" : [
+            "dependencies": [
                 "$(OBJ)"
             ],
             "commands": [
@@ -30,7 +22,7 @@
         },
         {
             "name": "$(LMY)",
-            "dependencies" : [],
+            "dependencies": [],
             "commands": [
                 "make -C $(LMY)"
             ]
