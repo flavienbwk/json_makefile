@@ -57,7 +57,7 @@ node json_to_makefile.ts makefile_example.json # [, makefile_example_2.json[, ma
 }
 ```
 
-Will output :
+Will output inside `Makefile` :
 
 ```Makefile
 CC        = gcc
