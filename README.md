@@ -44,6 +44,7 @@ node json_to_makefile.ts makefile_example.json # [ makefile_example_2.json [ mak
         "SRC": [                    // Variable with multiple values.
             "./src/file_manager.c",
             "./src/arguments_handler.c"
+        ]
     },
     "targets": [                    // Define here your targets.
         {
