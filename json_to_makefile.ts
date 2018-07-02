@@ -29,7 +29,7 @@ if (files.length) {
             consoleColors.print_info("\nChecking " + file + "...");
             let parser = new Parser(file);
             if (parser.parse())
-                consoleColors.print_success("Successfuly parserd the file.");
+                consoleColors.print_success("Successfuly parsed the file.");
             else
                 consoleColors.print_error(parser.message);
         });

@@ -2,6 +2,10 @@
 A simple utility to convert a JSON file to a well-formatted Makefile.
 Helps you to generate a beautiful, programmable, with error checks and portable Makefile.
 
+### Notes of the version :
+- Fixed a bug in returned error message.
+- Added the possibility to add variables with multiple values (array).
+
 ## Install :
 
 ```bash
@@ -36,7 +40,10 @@ node json_to_makefile.ts makefile_example.json # [ makefile_example_2.json [ mak
         "MAIN_PRGM": "main.c",
         "NAME_PRGM": "my_program",
         "$(NAME)": "this is a name",
-        "$(LMY)": "another name"
+        "$(LMY)": "another name",
+        "SRC": [                    // Variable with multiple values.
+            "./src/file_manager.c",
+            "./src/arguments_handler.c"
     },
     "targets": [                    // Define here your targets.
         {
@@ -71,6 +78,8 @@ MAIN_PRGM = main.c
 NAME_PRGM = my_ls
 $(NAME)   = this is a name
 $(LMY)    = another name
+SRC	  = ./src/file_manager.c \
+            ./src/arguments_handler.c
 
 $(NAME):    $(OBJ) $(LMY)
             ar rc $(NAME) $(OBJ)

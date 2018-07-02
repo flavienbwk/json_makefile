@@ -1,5 +1,5 @@
 {
-    "parser_version": "0.0.1",
+    "parser_version": "0.1.0",
     "output": "Makefile",
     "variables": {
         "CC": "gcc",

@@ -1,5 +1,5 @@
-var     Pjson = require('../package.json');
-var     Fs = require('fs');
+var Pjson = require('../package.json');
+var Fs = require('fs');
 const   Utilities = require('./Utilities.ts');
 
 let     g_utils = new Utilities();
@@ -45,11 +45,12 @@ parser:g_utils.writeFile:" + this._version + ">"))
         if (this._src_content.length > 1) {
             if (g_utils.isJSON(this._src_content)) {
                 this._src_json = JSON.parse(this._src_content);
-                if (this._version === this._src_json.parser_version) {
-                    return true;
-                } else
-                    this._message = "Wrong parser version (" + this._version
-                            + ") for file (" + this._src_json.version + ").";
+                if (this._version !== this._src_json.parser_version)
+                    console.log("(WARN) Wrong parser version ("
+                            + this._version
+                            + ") for file (" + this._src_json["parser_version"]
+                            + ").");
+                return true;
             } else
                 this._message = "Invalid JSON.";
         } else
@@ -71,13 +72,19 @@ parser:g_utils.writeFile:" + this._version + ">"))
                 error = 1;
                 if (key in array["variables"]) {
                     if (key.length > 0)
-                        error = 0;
+                        if (g_utils.isArray(array["variables"][key]))
+                            if (array["variables"][key].length > 0)
+                                error = 0;
+                            else
+                                this._message = "Nothing in this array."
+                        else
+                            error = 0;
                     else
                         this._message = "A variable has been not set.";
                 } else
                     this._message = "Invalid format for variables.";
                 if (error) {
-                    this._message += " For variable " + (++key) + ".";
+                    this._message += " For variable " + (key) + ".";
                     return false;
                 }
             }
@@ -128,13 +135,28 @@ parser:g_utils.writeFile:" + this._version + ">"))
                 max_align = array.targets[i].name.length;
 
         for (var variable_key in array.variables) {
-            mf_content += variable_key
-                    + g_utils.getSpaces(max_align - variable_key.length)
-                    + " = "
-                    + array.variables[variable_key]
-                    + "\n";
+            if (g_utils.isArray(array.variables[variable_key])) {
+                if (array.variables[variable_key].length > 0)
+                    mf_content += variable_key
+                            + g_utils.getSpaces(max_align - variable_key.length)
+                            + " = "
+                            + array.variables[variable_key][0] + "\n";
+                for (var i_key in array.variables[variable_key])
+                    if (i_key > 0) {
+                        mf_content += g_utils.getSpaces(max_align + 3)
+                                + array.variables[variable_key][i_key]
+                        if (i_key == array.variables[variable_key].length - 1)
+                            mf_content += " \\"
+                        mf_content += "\n";
+                    }
+            } else
+                mf_content += variable_key
+                        + g_utils.getSpaces(max_align - variable_key.length)
+                        + " = "
+                        + array.variables[variable_key]
+                        + "\n";
         }
-        
+
         mf_content += "\n";
         for (var target in array.targets) {
             mf_content += array.targets[target]["name"]
